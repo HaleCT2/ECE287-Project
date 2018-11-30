@@ -33,21 +33,30 @@ ENTITY car_evasion_game IS
 END car_evasion_game;
 
 ARCHITECTURE behavior OF car_evasion_game IS
-SIGNAL carstate														   						: STD_LOGIC_VECTOR(0 TO 1);
-SIGNAL enemy1heightadd, enemy2heightadd, enemy3heightadd, x			 				: INTEGER := 0;
-SIGNAL enemyspeed, enemyspawn										  			   			: INTEGER := 5000000;
-SIGNAL enemy_counter, enemycreation_counter, enemygeneration, createenemy		: INTEGER := 0;
-SIGNAL exist1, exist2, exist3, feedback													: STD_LOGIC;
-SIGNAL random_counter    																	   : STD_LOGIC_VECTOR(14 DOWNTO 0); 
-
+SIGNAL carstate														   													: STD_LOGIC_VECTOR(0 TO 1) := "00";
+SIGNAL enemy1heightadd, enemy2heightadd, enemy3heightadd			 												: INTEGER := 0;
+SIGNAL enemyspeed, enemyspawn										  			   										: INTEGER := 5000000;
+SIGNAL enemy_counter, enemycreation_counter,lossanimation_counter, enemygeneration, createenemy		: INTEGER := 0;
+SIGNAL exist1, exist2, exist3, feedback, loss_flag																	: STD_LOGIC;
+SIGNAL random_counter    																	  								: STD_LOGIC_VECTOR(14 DOWNTO 0);
 
 BEGIN
 
 	PROCESS(disp_ena, row, column, button_left, button_right, clk)
 	BEGIN
 
-		IF(disp_ena = '1') THEN	
-			IF (row > lane1_s AND row < lane1_e) THEN
+		IF(disp_ena = '1') THEN
+			IF (loss_flag = '1') THEN
+				IF(lossanimation_counter < 10000000) THEN
+					red <= (OTHERS => '1');
+					green	<= (OTHERS => '1');
+					blue <= (OTHERS => '1');
+				ELSE
+					red <= (OTHERS => '0');
+					green	<= (OTHERS => '0');
+					blue <= (OTHERS => '0');
+				END IF;
+			ELSIF (row > lane1_s AND row < lane1_e) THEN
 				red <= (OTHERS => '1');
 				green	<= (OTHERS => '1');
 				blue <= (OTHERS => '1');    
@@ -55,26 +64,22 @@ BEGIN
 				red <= (OTHERS => '1');
 				green	<= (OTHERS => '1');
 				blue <= (OTHERS => '1');
-			ELSIF (button_left = '0' AND button_right = '1' AND row > carwidth_s AND row < carwidth_e AND column > carlength_s AND column < carlength_e) THEN
+			ELSIF (carstate = "00" AND row > carwidth_s AND row < carwidth_e AND column > carlength_s AND column < carlength_e) THEN
 				red <= ("00110011");
 				green	<= ("10011001");
 				blue <= ("00110011");
-				carstate <= "00";
-			ELSIF (button_left = '1' AND button_right = '1' AND row > (carwidth_s + 658) AND row < (carwidth_e + 658) AND column > carlength_s AND column < carlength_e) THEN
+			ELSIF (carstate = "01" AND row > (carwidth_s + 658) AND row < (carwidth_e + 658) AND column > carlength_s AND column < carlength_e) THEN
 				red <= ("00110011");
 				green	<= ("10011001");
 				blue <= ("00110011");
-				carstate <= "01";
-			ELSIF (button_left = '0' AND button_right = '0' AND row > (carwidth_s + 658) AND row < (carwidth_e + 658) AND column > carlength_s AND column < carlength_e) THEN
+			ELSIF (carstate = "10" AND row > (carwidth_s + 1316) AND row < (carwidth_e + 1316) AND column > carlength_s AND column < carlength_e) THEN
 				red <= ("00110011");
 				green	<= ("10011001");
 				blue <= ("00110011");
-				carstate <= "01";
-			ELSIF (button_left = '1' AND button_right = '0' AND row > (carwidth_s + 1316) AND row < (carwidth_e + 1316) AND column > carlength_s AND column < carlength_e) THEN
+			ELSIF (carstate = "01" AND row > (carwidth_s + 658) AND row < (carwidth_e + 658) AND column > carlength_s AND column < carlength_e) THEN
 				red <= ("00110011");
 				green	<= ("10011001");
 				blue <= ("00110011");
-				carstate <= "10";
 			ELSIF (row > enemy1width_s AND row < enemy1width_e AND column > (enemyheight_s + enemy1heightadd) AND column < (enemyheight_e + enemy1heightadd)) THEN
 				IF (exist1 = '1' AND enemy1heightadd <= 1000) THEN
 						red <= ("11111111");
@@ -131,13 +136,10 @@ BEGIN
 			enemycreation_counter <= 0;
 				IF (random_counter(7) = '1' AND random_counter(9) = '0') THEN
 					createenemy <= 0;
-					enemycreation_counter <= 0;
 				ELSIF (random_counter(7) = '1' AND random_counter(9) = '1') THEN
 					createenemy <= 1;
-					enemycreation_counter <= 0;
 				ELSE
 					createenemy <= 2;
-					enemycreation_counter <= 0;
 				END IF;
 			ELSE
 				enemycreation_counter <= enemycreation_counter + 1;
@@ -166,15 +168,15 @@ BEGIN
 				enemy_counter <= enemy_counter + 1;
 			END IF;
 			
-			IF (enemy1heightadd > 1500) THEN
+			IF (enemy1heightadd > 1200) THEN
 				enemy1heightadd <= 0;
 				exist1 <= '0';
 			END IF;
-			IF (enemy2heightadd > 1500) THEN
+			IF (enemy2heightadd > 1200) THEN
 				enemy2heightadd <= 0;
 				exist2 <= '0';
 			END IF;
-			IF (enemy3heightadd > 1500) THEN
+			IF (enemy3heightadd > 1200) THEN
 				enemy3heightadd <= 0;
 				exist3 <= '0';
 			END IF;
@@ -188,6 +190,43 @@ BEGIN
 		random_counter <= random_counter(13 DOWNTO 0) & feedback;
 		END IF;
 	END PROCESS RANDOM_LFSR;
- 
+	
+	COLLISION_LOGIC: PROCESS (clk)
+	BEGIN
+		IF (clk'EVENT AND clk = '1') THEN
+			IF (enemy1heightadd > 700 AND enemy1heightadd < 1000 AND carstate = "00") THEN
+				loss_flag <= '1';
+			ELSIF (enemy2heightadd > 700 AND enemy2heightadd < 1000 AND carstate = "01") THEN
+				loss_flag <= '1';
+			ELSIF (enemy3heightadd > 700 AND enemy3heightadd < 1000 AND carstate = "10") THEN
+				loss_flag <= '1';
+			ELSE
+				loss_flag <= '0';
+			END IF;
+			
+			IF(loss_flag = '1') THEN
+				IF (lossanimation_counter < 25000000) THEN
+					lossanimation_counter <= lossanimation_counter + 1;
+				ELSE
+					lossanimation_counter <= 0;
+					loss_flag <= '0';
+				END IF;
+			END IF;
+			
+		END IF;
+	END PROCESS COLLISION_LOGIC;
+	
+	VEHICLE_CONTROL: PROCESS (button_left, button_right)
+	BEGIN
+		IF(button_left = '0' AND button_right = '1') THEN
+			carstate <= "00";
+		ELSIF(button_left = '1' AND button_right = '1') THEN
+			carstate <= "01";
+		ELSIF(button_left = '1' AND button_right = '0') THEN
+			carstate <= "10";
+		ELSIF(button_left = '0' AND button_right = '0') THEN
+			carstate <= "01";
+		END IF;
+	END PROCESS VEHICLE_CONTROL;
 		
 END behavior;
