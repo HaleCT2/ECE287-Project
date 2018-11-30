@@ -1,5 +1,5 @@
 Flow report for ECE287_Project
-Thu Nov 15 18:12:58 2018
+Thu Nov 29 23:47:26 2018
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Nov 15 18:12:55 2018       ;
+; Flow Status                        ; Successful - Thu Nov 29 23:47:22 2018       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; ECE287_Project                              ;
 ; Top-level Entity Name              ; ECE287_Project                              ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 132 / 114,480 ( < 1 % )                     ;
-;     Total combinational functions  ; 126 / 114,480 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 51 / 114,480 ( < 1 % )                      ;
-; Total registers                    ; 51                                          ;
+; Total logic elements               ; 660 / 114,480 ( < 1 % )                     ;
+;     Total combinational functions  ; 640 / 114,480 ( < 1 % )                     ;
+;     Dedicated logic registers      ; 229 / 114,480 ( < 1 % )                     ;
+; Total registers                    ; 229                                         ;
 ; Total pins                         ; 32 / 529 ( 6 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/15/2018 18:12:34 ;
+; Start date & time ; 11/29/2018 23:46:44 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ECE287_Project      ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 238177198224390.154232355307204        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 174508025697171.154355320410856        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
@@ -92,11 +92,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 4820 MB             ; 00:00:19                           ;
-; Fitter                    ; 00:00:08     ; 1.0                     ; 5733 MB             ; 00:00:13                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 4701 MB             ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4860 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:21     ; --                      ; --                  ; 00:00:35                           ;
+; Analysis & Synthesis      ; 00:00:16     ; 1.0                     ; 4831 MB             ; 00:00:34                           ;
+; Fitter                    ; 00:00:15     ; 1.0                     ; 5473 MB             ; 00:00:21                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 4698 MB             ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4843 MB             ; 00:00:02                           ;
+; Total                     ; 00:00:38     ; --                      ; --                  ; 00:01:00                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -105,10 +105,10 @@ agreement for further details.
 +---------------------------+------------------+------------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; CEC-EGB267-01    ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter                    ; CEC-EGB267-01    ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler                 ; CEC-EGB267-01    ; Windows 10 ; 10.0       ; x86_64         ;
-; TimeQuest Timing Analyzer ; CEC-EGB267-01    ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis      ; HALECT2PC        ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; HALECT2PC        ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; HALECT2PC        ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; HALECT2PC        ; Windows 10 ; 10.0       ; x86_64         ;
 +---------------------------+------------------+------------+------------+----------------+
 
 

@@ -1,0 +1,193 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY car_evasion_game IS
+	GENERIC(
+		lane1_s		  : INTEGER := 608;
+		lane1_e 		  : INTEGER := 656;
+		lane2_s		  : INTEGER := 1264;
+		lane2_e 		  : INTEGER := 1312;
+		carwidth_s 	  : INTEGER := 202;
+		carwidth_e 	  : INTEGER := 405;
+		carlength_s   : INTEGER := 760;
+		carlength_e   : INTEGER := 1030;   
+		enemy1width_s : INTEGER := 253;
+		enemy1width_e : INTEGER := 304;
+		enemyheight_s : INTEGER := 0;
+		enemyheight_e : INTEGER := 75;
+		enemy2width_s : INTEGER := 911;
+		enemy2width_e : INTEGER := 962;
+		enemy3width_s : INTEGER := 1565;
+		enemy3width_e : INTEGER := 1616);
+	PORT(
+		clk			 : IN 	STD_LOGIC;
+		button_left  : IN		STD_LOGIC;
+		button_right : IN		STD_LOGIC;
+		disp_ena		 :	IN		STD_LOGIC;	
+		row			 :	IN		INTEGER;		
+		column		 :	IN		INTEGER;		
+		red			 :	OUT	STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');  
+		green			 :	OUT	STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');  
+		blue			 :	OUT	STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0')); 
+END car_evasion_game;
+
+ARCHITECTURE behavior OF car_evasion_game IS
+SIGNAL carstate														   						: STD_LOGIC_VECTOR(0 TO 1);
+SIGNAL enemy1heightadd, enemy2heightadd, enemy3heightadd, x			 				: INTEGER := 0;
+SIGNAL enemyspeed, enemyspawn										  			   			: INTEGER := 5000000;
+SIGNAL enemy_counter, enemycreation_counter, enemygeneration, createenemy		: INTEGER := 0;
+SIGNAL exist1, exist2, exist3, feedback													: STD_LOGIC;
+SIGNAL random_counter    																	   : STD_LOGIC_VECTOR(14 DOWNTO 0); 
+
+
+BEGIN
+
+	PROCESS(disp_ena, row, column, button_left, button_right, clk)
+	BEGIN
+
+		IF(disp_ena = '1') THEN	
+			IF (row > lane1_s AND row < lane1_e) THEN
+				red <= (OTHERS => '1');
+				green	<= (OTHERS => '1');
+				blue <= (OTHERS => '1');    
+			ELSIF (row > lane2_s AND row < lane2_e) THEN
+				red <= (OTHERS => '1');
+				green	<= (OTHERS => '1');
+				blue <= (OTHERS => '1');
+			ELSIF (button_left = '0' AND button_right = '1' AND row > carwidth_s AND row < carwidth_e AND column > carlength_s AND column < carlength_e) THEN
+				red <= ("00110011");
+				green	<= ("10011001");
+				blue <= ("00110011");
+				carstate <= "00";
+			ELSIF (button_left = '1' AND button_right = '1' AND row > (carwidth_s + 658) AND row < (carwidth_e + 658) AND column > carlength_s AND column < carlength_e) THEN
+				red <= ("00110011");
+				green	<= ("10011001");
+				blue <= ("00110011");
+				carstate <= "01";
+			ELSIF (button_left = '0' AND button_right = '0' AND row > (carwidth_s + 658) AND row < (carwidth_e + 658) AND column > carlength_s AND column < carlength_e) THEN
+				red <= ("00110011");
+				green	<= ("10011001");
+				blue <= ("00110011");
+				carstate <= "01";
+			ELSIF (button_left = '1' AND button_right = '0' AND row > (carwidth_s + 1316) AND row < (carwidth_e + 1316) AND column > carlength_s AND column < carlength_e) THEN
+				red <= ("00110011");
+				green	<= ("10011001");
+				blue <= ("00110011");
+				carstate <= "10";
+			ELSIF (row > enemy1width_s AND row < enemy1width_e AND column > (enemyheight_s + enemy1heightadd) AND column < (enemyheight_e + enemy1heightadd)) THEN
+				IF (exist1 = '1' AND enemy1heightadd <= 1000) THEN
+						red <= ("11111111");
+						green <= ("10000101");
+						blue <= ("00011111");
+					ELSE
+						red <= (OTHERS => '0');
+						green	<= (OTHERS => '0');
+						blue <= (OTHERS => '0');
+					END IF;
+			ELSIF (row > enemy2width_s AND row < enemy2width_e AND column > (enemyheight_s + enemy2heightadd) AND column < (enemyheight_e + enemy2heightadd)) THEN
+				IF (exist2 = '1' AND enemy2heightadd <= 1000) THEN
+						red <= ("11111111");
+						green <= ("10000101");
+						blue <= ("00011111");
+					ELSE
+						red <= (OTHERS => '0');
+						green	<= (OTHERS => '0');
+						blue <= (OTHERS => '0');
+					END IF;
+			ELSIF (row > enemy3width_s AND row < enemy3width_e AND column > (enemyheight_s + enemy3heightadd) AND column < (enemyheight_e + enemy3heightadd)) THEN
+
+				IF (exist3 = '1' AND enemy3heightadd <= 1000) THEN
+						red <= ("11111111");
+						green <= ("10000101");
+						blue <= ("00011111");
+					ELSE
+						red <= (OTHERS => '0');
+						green	<= (OTHERS => '0');
+						blue <= (OTHERS => '0');
+					END IF;
+			ELSE
+				red <= (OTHERS => '0');
+				green	<= (OTHERS => '0');
+				blue <= (OTHERS => '0');
+			END IF;
+		ELSE					
+			red <= (OTHERS => '0');
+			green <= (OTHERS => '0');
+			blue <= (OTHERS => '0');
+		END IF;
+	END PROCESS;
+	
+	ENEMIES: PROCESS (clk)
+		BEGIN
+		IF (clk'EVENT AND clk = '1') THEN
+			enemygeneration <= (enemygeneration + 1);
+			
+			IF (enemygeneration >= 2) THEN
+				enemygeneration <= 0;
+			END IF;
+			
+			IF (enemycreation_counter >= 25000000) THEN
+			enemycreation_counter <= 0;
+				IF (random_counter(7) = '1' AND random_counter(9) = '0') THEN
+					createenemy <= 0;
+					enemycreation_counter <= 0;
+				ELSIF (random_counter(7) = '1' AND random_counter(9) = '1') THEN
+					createenemy <= 1;
+					enemycreation_counter <= 0;
+				ELSE
+					createenemy <= 2;
+					enemycreation_counter <= 0;
+				END IF;
+			ELSE
+				enemycreation_counter <= enemycreation_counter + 1;
+			END IF;
+			
+			IF (createenemy = 0) THEN
+				exist1 <= '1';
+			ELSIF (createenemy = 1) THEN
+				exist2 <= '1';
+			ELSIF (createenemy = 2) THEN
+				exist3 <= '1';
+			END IF;
+			
+			IF (enemy_counter >= enemyspeed) then
+				IF (exist1 = '1') THEN
+					enemy1heightadd <= enemy1heightadd + 50;
+				END IF;
+				IF (exist2 = '1') THEN
+					enemy2heightadd <= enemy2heightadd + 50;
+				END IF;
+				IF (exist3 = '1') THEN
+					enemy3heightadd <= enemy3heightadd + 50;
+				END IF;
+				enemy_counter <= 0;
+			ELSE
+				enemy_counter <= enemy_counter + 1;
+			END IF;
+			
+			IF (enemy1heightadd > 1500) THEN
+				enemy1heightadd <= 0;
+				exist1 <= '0';
+			END IF;
+			IF (enemy2heightadd > 1500) THEN
+				enemy2heightadd <= 0;
+				exist2 <= '0';
+			END IF;
+			IF (enemy3heightadd > 1500) THEN
+				enemy3heightadd <= 0;
+				exist3 <= '0';
+			END IF;
+		END IF;
+	END PROCESS ENEMIES;
+	
+	RANDOM_LFSR: PROCESS (clk) 
+	BEGIN
+		IF (clk'EVENT AND clk = '1') THEN
+		feedback <= NOT(random_counter(14) XOR random_counter(13));
+		random_counter <= random_counter(13 DOWNTO 0) & feedback;
+		END IF;
+	END PROCESS RANDOM_LFSR;
+ 
+		
+END behavior;

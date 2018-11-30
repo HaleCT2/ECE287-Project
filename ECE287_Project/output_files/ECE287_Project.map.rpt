@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ECE287_Project
-Thu Nov 15 18:12:42 2018
+Thu Nov 29 23:47:00 2018
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -19,7 +19,7 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
  12. Parameter Settings for User Entity Instance: altpll0:inst2|altpll:altpll_component
  13. Parameter Settings for User Entity Instance: vga_controller:inst1
- 14. Parameter Settings for User Entity Instance: hw_image_generator:inst5
+ 14. Parameter Settings for User Entity Instance: car_evasion_game:inst5
  15. altpll Parameter Settings by Entity Instance
  16. Post-Synthesis Netlist Statistics for Top Partition
  17. Elapsed Time Per Partition
@@ -50,15 +50,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 15 18:12:42 2018       ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 29 23:47:00 2018       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; ECE287_Project                              ;
 ; Top-level Entity Name              ; ECE287_Project                              ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 147                                         ;
-;     Total combinational functions  ; 124                                         ;
-;     Dedicated logic registers      ; 51                                          ;
-; Total registers                    ; 51                                          ;
+; Total logic elements               ; 676                                         ;
+;     Total combinational functions  ; 638                                         ;
+;     Dedicated logic registers      ; 229                                         ;
+; Total registers                    ; 229                                         ;
 ; Total pins                         ; 32                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -158,15 +158,15 @@ agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -175,78 +175,82 @@ agreement for further details.
 +----------------------------------+-----------------+------------------------------------------+--------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                                ; File Name with Absolute Path                                             ; Library ;
 +----------------------------------+-----------------+------------------------------------------+--------------------------------------------------------------------------+---------+
-; vga_controller.vhd               ; yes             ; User VHDL File                           ; C:/Users/HaleCT2/Desktop/ECE287_Project/vga_controller.vhd               ;         ;
-; hw_image_generator.vhd           ; yes             ; User VHDL File                           ; C:/Users/HaleCT2/Desktop/ECE287_Project/hw_image_generator.vhd           ;         ;
-; ece287_project.bdf               ; yes             ; Auto-Found Block Diagram/Schematic File  ; C:/Users/HaleCT2/Desktop/ECE287_Project/ece287_project.bdf               ;         ;
-; altpll0.vhd                      ; yes             ; Auto-Found Wizard-Generated File         ; C:/Users/HaleCT2/Desktop/ECE287_Project/altpll0.vhd                      ;         ;
+; vga_controller.vhd               ; yes             ; User VHDL File                           ; C:/Users/Carter Hale/Desktop/ECE287_Project/vga_controller.vhd           ;         ;
+; ece287_project.bdf               ; yes             ; Auto-Found Block Diagram/Schematic File  ; C:/Users/Carter Hale/Desktop/ECE287_Project/ece287_project.bdf           ;         ;
+; altpll0.vhd                      ; yes             ; Auto-Found Wizard-Generated File         ; C:/Users/Carter Hale/Desktop/ECE287_Project/altpll0.vhd                  ;         ;
 ; altpll.tdf                       ; yes             ; Megafunction                             ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf        ;         ;
 ; aglobal161.inc                   ; yes             ; Megafunction                             ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc    ;         ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                             ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
 ; stratixii_pll.inc                ; yes             ; Megafunction                             ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratixii_pll.inc ;         ;
 ; cycloneii_pll.inc                ; yes             ; Megafunction                             ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/cycloneii_pll.inc ;         ;
-; db/altpll0_altpll.v              ; yes             ; Auto-Generated Megafunction              ; C:/Users/HaleCT2/Desktop/ECE287_Project/db/altpll0_altpll.v              ;         ;
+; db/altpll0_altpll.v              ; yes             ; Auto-Generated Megafunction              ; C:/Users/Carter Hale/Desktop/ECE287_Project/db/altpll0_altpll.v          ;         ;
+; car_evasion_game.vhd             ; yes             ; Auto-Found VHDL File                     ; C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd         ;         ;
 +----------------------------------+-----------------+------------------------------------------+--------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                                                        ;
-+---------------------------------------------+--------------------------------------------------------------------------------------+
-; Resource                                    ; Usage                                                                                ;
-+---------------------------------------------+--------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 147                                                                                  ;
-;                                             ;                                                                                      ;
-; Total combinational functions               ; 124                                                                                  ;
-; Logic element usage by number of LUT inputs ;                                                                                      ;
-;     -- 4 input functions                    ; 83                                                                                   ;
-;     -- 3 input functions                    ; 11                                                                                   ;
-;     -- <=2 input functions                  ; 30                                                                                   ;
-;                                             ;                                                                                      ;
-; Logic elements by mode                      ;                                                                                      ;
-;     -- normal mode                          ; 103                                                                                  ;
-;     -- arithmetic mode                      ; 21                                                                                   ;
-;                                             ;                                                                                      ;
-; Total registers                             ; 51                                                                                   ;
-;     -- Dedicated logic registers            ; 51                                                                                   ;
-;     -- I/O registers                        ; 0                                                                                    ;
-;                                             ;                                                                                      ;
-; I/O pins                                    ; 32                                                                                   ;
-;                                             ;                                                                                      ;
-; Embedded Multiplier 9-bit elements          ; 0                                                                                    ;
-;                                             ;                                                                                      ;
-; Total PLLs                                  ; 1                                                                                    ;
-;     -- PLLs                                 ; 1                                                                                    ;
-;                                             ;                                                                                      ;
-; Maximum fan-out node                        ; altpll0:inst2|altpll:altpll_component|altpll0_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 53                                                                                   ;
-; Total fan-out                               ; 607                                                                                  ;
-; Average fan-out                             ; 2.53                                                                                 ;
-+---------------------------------------------+--------------------------------------------------------------------------------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 676       ;
+;                                             ;           ;
+; Total combinational functions               ; 638       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 221       ;
+;     -- 3 input functions                    ; 83        ;
+;     -- <=2 input functions                  ; 334       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 318       ;
+;     -- arithmetic mode                      ; 320       ;
+;                                             ;           ;
+; Total registers                             ; 229       ;
+;     -- Dedicated logic registers            ; 229       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 32        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Total PLLs                                  ; 1         ;
+;     -- PLLs                                 ; 1         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 179       ;
+; Total fan-out                               ; 2423      ;
+; Average fan-out                             ; 2.60      ;
++---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                           ;
-+------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+--------------------+--------------+
-; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name        ; Library Name ;
-+------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+--------------------+--------------+
-; |ECE287_Project                          ; 124 (0)             ; 51 (0)                    ; 0           ; 0            ; 0       ; 0         ; 32   ; 0            ; |ECE287_Project                                                                     ; ECE287_Project     ; work         ;
-;    |altpll0:inst2|                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|altpll0:inst2                                                       ; altpll0            ; work         ;
-;       |altpll:altpll_component|          ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|altpll0:inst2|altpll:altpll_component                               ; altpll             ; work         ;
-;          |altpll0_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|altpll0:inst2|altpll:altpll_component|altpll0_altpll:auto_generated ; altpll0_altpll     ; work         ;
-;    |hw_image_generator:inst5|            ; 49 (49)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|hw_image_generator:inst5                                            ; hw_image_generator ; work         ;
-;    |vga_controller:inst1|                ; 75 (75)             ; 51 (51)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|vga_controller:inst1                                                ; vga_controller     ; work         ;
-+------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+--------------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                         ;
++------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Entity Name      ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+------------------+--------------+
+; |ECE287_Project                          ; 638 (0)             ; 229 (0)                   ; 0           ; 0            ; 0       ; 0         ; 32   ; 0            ; |ECE287_Project                                                                     ; ECE287_Project   ; work         ;
+;    |altpll0:inst2|                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|altpll0:inst2                                                       ; altpll0          ; work         ;
+;       |altpll:altpll_component|          ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|altpll0:inst2|altpll:altpll_component                               ; altpll           ; work         ;
+;          |altpll0_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|altpll0:inst2|altpll:altpll_component|altpll0_altpll:auto_generated ; altpll0_altpll   ; work         ;
+;    |car_evasion_game:inst5|              ; 567 (567)           ; 178 (178)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|car_evasion_game:inst5                                              ; car_evasion_game ; work         ;
+;    |vga_controller:inst1|                ; 71 (71)             ; 51 (51)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ECE287_Project|vga_controller:inst1                                                ; vga_controller   ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; vga_controller:inst1|column[12..30]    ; Stuck at GND due to stuck port data_in ;
-; vga_controller:inst1|row[11..30]       ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 39 ;                                        ;
-+----------------------------------------+----------------------------------------+
++------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                 ;
++-------------------------------------------+----------------------------------------+
+; Register name                             ; Reason for Removal                     ;
++-------------------------------------------+----------------------------------------+
+; car_evasion_game:inst5|enemy3heightadd[0] ; Stuck at GND due to stuck port data_in ;
+; car_evasion_game:inst5|enemy2heightadd[0] ; Stuck at GND due to stuck port data_in ;
+; car_evasion_game:inst5|enemy1heightadd[0] ; Stuck at GND due to stuck port data_in ;
+; car_evasion_game:inst5|createenemy[2..31] ; Stuck at GND due to stuck port data_in ;
+; vga_controller:inst1|column[12..30]       ; Stuck at GND due to stuck port data_in ;
+; vga_controller:inst1|row[11..30]          ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 72    ;                                        ;
++-------------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -254,12 +258,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 51    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 229   ;
+; Number of registers using Synchronous Clear  ; 64    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 25    ;
+; Number of registers using Clock Enable       ; 54    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -269,21 +273,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; vga_controller:inst1|column[0]         ; 6       ;
-; vga_controller:inst1|column[31]        ; 3       ;
-; vga_controller:inst1|row[31]           ; 3       ;
-; vga_controller:inst1|row[0]            ; 1       ;
+; vga_controller:inst1|column[31]        ; 4       ;
+; vga_controller:inst1|column[0]         ; 7       ;
+; vga_controller:inst1|row[31]           ; 7       ;
+; vga_controller:inst1|row[0]            ; 7       ;
 ; Total number of inverted registers = 4 ;         ;
 +----------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |ECE287_Project|vga_controller:inst1|v_count ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |ECE287_Project|car_evasion_game:inst5|enemy3heightadd[30] ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |ECE287_Project|car_evasion_game:inst5|enemy2heightadd[21] ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |ECE287_Project|car_evasion_game:inst5|enemy1heightadd[21] ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |ECE287_Project|vga_controller:inst1|v_count               ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |ECE287_Project|car_evasion_game:inst5|blue[3]             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------+
@@ -679,20 +687,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: hw_image_generator:inst5 ;
-+----------------+-------+----------------------------------------------+
-; Parameter Name ; Value ; Type                                         ;
-+----------------+-------+----------------------------------------------+
-; lane1_s        ; 608   ; Signed Integer                               ;
-; lane1_e        ; 656   ; Signed Integer                               ;
-; lane2_s        ; 1264  ; Signed Integer                               ;
-; lane2_e        ; 1312  ; Signed Integer                               ;
-; carwidth_s     ; 202   ; Signed Integer                               ;
-; carwidth_e     ; 405   ; Signed Integer                               ;
-; carlength_s    ; 760   ; Signed Integer                               ;
-; carlength_e    ; 1030  ; Signed Integer                               ;
-+----------------+-------+----------------------------------------------+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: car_evasion_game:inst5 ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; lane1_s        ; 608   ; Signed Integer                             ;
+; lane1_e        ; 656   ; Signed Integer                             ;
+; lane2_s        ; 1264  ; Signed Integer                             ;
+; lane2_e        ; 1312  ; Signed Integer                             ;
+; carwidth_s     ; 202   ; Signed Integer                             ;
+; carwidth_e     ; 405   ; Signed Integer                             ;
+; carlength_s    ; 760   ; Signed Integer                             ;
+; carlength_e    ; 1030  ; Signed Integer                             ;
+; enemy1width_s  ; 253   ; Signed Integer                             ;
+; enemy1width_e  ; 304   ; Signed Integer                             ;
+; enemyheight_s  ; 0     ; Signed Integer                             ;
+; enemyheight_e  ; 75    ; Signed Integer                             ;
+; enemy2width_s  ; 911   ; Signed Integer                             ;
+; enemy2width_e  ; 962   ; Signed Integer                             ;
+; enemy3width_s  ; 1565  ; Signed Integer                             ;
+; enemy3width_e  ; 1616  ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -719,22 +735,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 32                          ;
-; cycloneiii_ff         ; 51                          ;
-;     ENA               ; 25                          ;
-;     plain             ; 26                          ;
-; cycloneiii_lcell_comb ; 126                         ;
-;     arith             ; 21                          ;
-;         2 data inputs ; 21                          ;
-;     normal            ; 105                         ;
+; cycloneiii_ff         ; 229                         ;
+;     ENA               ; 54                          ;
+;     SCLR              ; 64                          ;
+;     plain             ; 111                         ;
+; cycloneiii_lcell_comb ; 640                         ;
+;     arith             ; 320                         ;
+;         2 data inputs ; 263                         ;
+;         3 data inputs ; 57                          ;
+;     normal            ; 320                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 5                           ;
-;         3 data inputs ; 11                          ;
-;         4 data inputs ; 83                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 58                          ;
+;         3 data inputs ; 26                          ;
+;         4 data inputs ; 221                         ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 5.13                        ;
+; Max LUT depth         ; 11.50                       ;
+; Average LUT depth     ; 6.67                        ;
 +-----------------------+-----------------------------+
 
 
@@ -743,7 +761,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -753,35 +771,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Thu Nov 15 18:12:33 2018
+    Info: Processing started: Thu Nov 29 23:46:44 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE287_Project -c ECE287_Project
 Warning (125092): Tcl Script File vga_pll.qip not found
     Info (125063): set_global_assignment -name QIP_FILE vga_pll.qip
 Warning (125092): Tcl Script File altpll0.qip not found
     Info (125063): set_global_assignment -name QIP_FILE altpll0.qip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Warning (12019): Can't analyze file -- file ../vga_with_hw_test_image_v1_1_restored/vga_with_hw_test_image.bdf is missing
 Warning (12019): Can't analyze file -- file ../vga_with_hw_test_image_v1_1_restored/vga_controller.vhd is missing
 Warning (12019): Can't analyze file -- file ../vga_with_hw_test_image_v1_1_restored/hw_image_generator.vhd is missing
 Warning (12019): Can't analyze file -- file ../vga_with_hw_test_image_v1_1_restored/altpll0.vhd is missing
 Warning (12019): Can't analyze file -- file vga_with_hw_test_image.bdf is missing
 Info (12021): Found 2 design units, including 1 entities, in source file vga_controller.vhd
-    Info (12022): Found design unit 1: vga_controller-behavior File: C:/Users/HaleCT2/Desktop/ECE287_Project/vga_controller.vhd Line: 52
-    Info (12023): Found entity 1: vga_controller File: C:/Users/HaleCT2/Desktop/ECE287_Project/vga_controller.vhd Line: 28
-Info (12021): Found 2 design units, including 1 entities, in source file hw_image_generator.vhd
-    Info (12022): Found design unit 1: hw_image_generator-behavior File: C:/Users/HaleCT2/Desktop/ECE287_Project/hw_image_generator.vhd Line: 47
-    Info (12023): Found entity 1: hw_image_generator File: C:/Users/HaleCT2/Desktop/ECE287_Project/hw_image_generator.vhd Line: 26
+    Info (12022): Found design unit 1: vga_controller-behavior File: C:/Users/Carter Hale/Desktop/ECE287_Project/vga_controller.vhd Line: 52
+    Info (12023): Found entity 1: vga_controller File: C:/Users/Carter Hale/Desktop/ECE287_Project/vga_controller.vhd Line: 28
+Warning (12019): Can't analyze file -- file hw_image_generator.vhd is missing
 Warning (12125): Using design file ece287_project.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: ECE287_Project
 Info (12127): Elaborating entity "ECE287_Project" for the top level hierarchy
 Warning (12125): Using design file altpll0.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: altpll0-SYN File: C:/Users/HaleCT2/Desktop/ECE287_Project/altpll0.vhd Line: 53
-    Info (12023): Found entity 1: altpll0 File: C:/Users/HaleCT2/Desktop/ECE287_Project/altpll0.vhd Line: 43
+    Info (12022): Found design unit 1: altpll0-SYN File: C:/Users/Carter Hale/Desktop/ECE287_Project/altpll0.vhd Line: 53
+    Info (12023): Found entity 1: altpll0 File: C:/Users/Carter Hale/Desktop/ECE287_Project/altpll0.vhd Line: 43
 Info (12128): Elaborating entity "altpll0" for hierarchy "altpll0:inst2"
-Info (12128): Elaborating entity "altpll" for hierarchy "altpll0:inst2|altpll:altpll_component" File: C:/Users/HaleCT2/Desktop/ECE287_Project/altpll0.vhd Line: 136
-Info (12130): Elaborated megafunction instantiation "altpll0:inst2|altpll:altpll_component" File: C:/Users/HaleCT2/Desktop/ECE287_Project/altpll0.vhd Line: 136
-Info (12133): Instantiated megafunction "altpll0:inst2|altpll:altpll_component" with the following parameter: File: C:/Users/HaleCT2/Desktop/ECE287_Project/altpll0.vhd Line: 136
+Info (12128): Elaborating entity "altpll" for hierarchy "altpll0:inst2|altpll:altpll_component" File: C:/Users/Carter Hale/Desktop/ECE287_Project/altpll0.vhd Line: 136
+Info (12130): Elaborated megafunction instantiation "altpll0:inst2|altpll:altpll_component" File: C:/Users/Carter Hale/Desktop/ECE287_Project/altpll0.vhd Line: 136
+Info (12133): Instantiated megafunction "altpll0:inst2|altpll:altpll_component" with the following parameter: File: C:/Users/Carter Hale/Desktop/ECE287_Project/altpll0.vhd Line: 136
     Info (12134): Parameter "bandwidth_type" = "AUTO"
     Info (12134): Parameter "clk0_divide_by" = "100"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
@@ -837,26 +853,39 @@ Info (12133): Instantiated megafunction "altpll0:inst2|altpll:altpll_component" 
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll0_altpll.v
-    Info (12023): Found entity 1: altpll0_altpll File: C:/Users/HaleCT2/Desktop/ECE287_Project/db/altpll0_altpll.v Line: 30
+    Info (12023): Found entity 1: altpll0_altpll File: C:/Users/Carter Hale/Desktop/ECE287_Project/db/altpll0_altpll.v Line: 30
 Info (12128): Elaborating entity "altpll0_altpll" for hierarchy "altpll0:inst2|altpll:altpll_component|altpll0_altpll:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:inst1"
-Info (12128): Elaborating entity "hw_image_generator" for hierarchy "hw_image_generator:inst5"
-Warning (10036): Verilog HDL or VHDL warning at hw_image_generator.vhd(48): object "carstate" assigned a value but never read File: C:/Users/HaleCT2/Desktop/ECE287_Project/hw_image_generator.vhd Line: 48
+Warning (12125): Using design file car_evasion_game.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: car_evasion_game-behavior File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 35
+    Info (12023): Found entity 1: car_evasion_game File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 5
+Info (12128): Elaborating entity "car_evasion_game" for hierarchy "car_evasion_game:inst5"
+Warning (10036): Verilog HDL or VHDL warning at car_evasion_game.vhd(36): object "carstate" assigned a value but never read File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 36
+Warning (10540): VHDL Signal Declaration warning at car_evasion_game.vhd(38): used explicit default value for signal "enemyspeed" because signal was never assigned a value File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 38
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(78): signal "enemy1heightadd" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 78
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(79): signal "exist1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 79
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(79): signal "enemy1heightadd" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 79
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(88): signal "enemy2heightadd" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 88
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(89): signal "exist2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 89
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(89): signal "enemy2heightadd" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 89
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(98): signal "enemy3heightadd" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 98
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(100): signal "exist3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 100
+Warning (10492): VHDL Process Statement warning at car_evasion_game.vhd(100): signal "enemy3heightadd" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Carter Hale/Desktop/ECE287_Project/car_evasion_game.vhd Line: 100
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "n_blank" is stuck at VCC
     Warning (13410): Pin "n_sync" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 203 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 732 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 170 logic cells
+    Info (21061): Implemented 699 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 4820 megabytes
-    Info: Processing ended: Thu Nov 15 18:12:42 2018
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
+    Info: Peak virtual memory: 4831 megabytes
+    Info: Processing ended: Thu Nov 29 23:47:00 2018
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:34
 
 

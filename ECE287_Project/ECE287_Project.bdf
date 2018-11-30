@@ -41,7 +41,7 @@ agreement for further details.
 	(input)
 	(rect 256 -72 424 -56)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "but_right" (rect 5 0 48 17)(font "Intel Clear" ))
+	(text "but_right" (rect 5 0 47 17)(font "Intel Clear" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -55,9 +55,9 @@ agreement for further details.
 )
 (pin
 	(input)
-	(rect 280 -96 448 -80)
+	(rect 256 -96 424 -80)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "but_left" (rect 5 0 43 12)(font "Arial" ))
+	(text "but_left" (rect 5 0 42 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -156,7 +156,7 @@ agreement for further details.
 )
 (pin
 	(output)
-	(rect 680 128 856 144)
+	(rect 680 120 856 136)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "red[7..0]" (rect 90 0 131 12)(font "Arial" ))
 	(pt 0 8)
@@ -169,11 +169,11 @@ agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 872 312 928 328))
+	(annotation_block (location)(rect 872 304 928 320))
 )
 (pin
 	(output)
-	(rect 680 144 856 160)
+	(rect 680 136 856 152)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "green[7..0]" (rect 90 0 143 12)(font "Arial" ))
 	(pt 0 8)
@@ -186,11 +186,11 @@ agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 872 328 928 344))
+	(annotation_block (location)(rect 872 320 928 336))
 )
 (pin
 	(output)
-	(rect 680 160 856 176)
+	(rect 688 152 864 168)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "blue[7..0]" (rect 90 0 136 12)(font "Arial" ))
 	(pt 0 8)
@@ -203,7 +203,7 @@ agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 872 344 928 360))
+	(annotation_block (location)(rect 880 336 936 352))
 )
 (symbol
 	(rect -360 176 -328 208)
@@ -415,43 +415,50 @@ agreement for further details.
 	(annotation_block (parameter)(rect 248 -48 417 161))
 )
 (symbol
-	(rect 448 104 640 248)
-	(text "hw_image_generator" (rect 5 0 105 12)(font "Arial" ))
+	(rect 456 96 648 240)
+	(text "car_evasion_game" (rect 5 0 98 12)(font "Arial" ))
 	(text "inst5" (rect 8 128 30 145)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "button_left" (rect 0 0 53 12)(font "Arial" ))
-		(text "button_left" (rect 21 27 74 39)(font "Arial" ))
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "button_right" (rect 0 0 57 12)(font "Arial" ))
-		(text "button_right" (rect 21 43 78 55)(font "Arial" ))
+		(text "button_left" (rect 0 0 53 12)(font "Arial" ))
+		(text "button_left" (rect 21 43 74 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "disp_ena" (rect 0 0 43 12)(font "Arial" ))
-		(text "disp_ena" (rect 21 59 64 71)(font "Arial" ))
+		(text "button_right" (rect 0 0 57 12)(font "Arial" ))
+		(text "button_right" (rect 21 59 78 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64))
 	)
 	(port
 		(pt 0 80)
 		(input)
-		(text "row[31..0]" (rect 0 0 48 12)(font "Arial" ))
-		(text "row[31..0]" (rect 21 75 69 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 3))
+		(text "disp_ena" (rect 0 0 43 12)(font "Arial" ))
+		(text "disp_ena" (rect 21 75 64 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
 	)
 	(port
 		(pt 0 96)
 		(input)
-		(text "column[31..0]" (rect 0 0 67 12)(font "Arial" ))
-		(text "column[31..0]" (rect 21 91 88 103)(font "Arial" ))
+		(text "row[31..0]" (rect 0 0 48 12)(font "Arial" ))
+		(text "row[31..0]" (rect 21 91 69 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "column[31..0]" (rect 0 0 67 12)(font "Arial" ))
+		(text "column[31..0]" (rect 21 107 88 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
 	)
 	(port
 		(pt 192 32)
@@ -514,10 +521,50 @@ agreement for further details.
 		"1030"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemy1width_s"
+		"253"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemy1width_e"
+		"304"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemyheight_s"
+		"0"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemyheight_e"
+		"75"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemy2width_s"
+		"911"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemy2width_e"
+		"962"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemy3width_s"
+		"1565"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"enemy3width_e"
+		"1616"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 176 128))
 	)
-	(annotation_block (parameter)(rect 640 -72 816 104))
+	(annotation_block (parameter)(rect 648 -232 848 96))
 )
 (connector
 	(pt 248 144)
@@ -540,10 +587,6 @@ agreement for further details.
 	(pt -344 160)
 )
 (connector
-	(pt -264 144)
-	(pt -248 144)
-)
-(connector
 	(pt -344 160)
 	(pt -248 160)
 )
@@ -564,75 +607,85 @@ agreement for further details.
 	(pt 48 160)
 )
 (connector
-	(pt 0 144)
-	(pt 0 152)
-)
-(connector
-	(pt 0 144)
-	(pt 32 144)
-)
-(connector
 	(pt 32 144)
 	(pt 64 144)
-)
-(connector
-	(pt 640 136)
-	(pt 680 136)
-	(bus)
-)
-(connector
-	(pt 640 152)
-	(pt 680 152)
-	(bus)
-)
-(connector
-	(pt 640 168)
-	(pt 680 168)
-	(bus)
-)
-(connector
-	(pt 448 168)
-	(pt 248 168)
-)
-(connector
-	(pt 248 168)
-	(pt 248 176)
-)
-(connector
-	(pt 448 -88)
-	(pt 448 136)
-)
-(connector
-	(pt 448 152)
-	(pt 432 152)
-)
-(connector
-	(pt 432 -64)
-	(pt 432 152)
 )
 (connector
 	(pt 432 -64)
 	(pt 424 -64)
 )
 (connector
-	(pt 448 184)
-	(pt 248 184)
-	(bus)
+	(pt 248 176)
+	(pt 456 176)
 )
 (connector
-	(pt 248 184)
+	(pt 432 -64)
+	(pt 432 160)
+)
+(connector
 	(pt 248 192)
+	(pt 456 192)
 	(bus)
 )
 (connector
 	(pt 248 208)
-	(pt 448 208)
+	(pt 456 208)
 	(bus)
 )
 (connector
-	(pt 448 208)
-	(pt 448 200)
+	(pt 432 160)
+	(pt 456 160)
+)
+(connector
+	(pt 424 -88)
+	(pt 448 -88)
+)
+(connector
+	(pt 448 144)
+	(pt 456 144)
+)
+(connector
+	(pt 448 -88)
+	(pt 448 144)
+)
+(connector
+	(pt 0 144)
+	(pt 32 144)
+)
+(connector
+	(pt -256 144)
+	(pt -256 -8)
+)
+(connector
+	(pt -264 144)
+	(pt -256 144)
+)
+(connector
+	(pt -256 144)
+	(pt -248 144)
+)
+(connector
+	(pt -256 -8)
+	(pt 456 -8)
+)
+(connector
+	(pt 456 -8)
+	(pt 456 128)
+)
+(connector
+	(pt 648 160)
+	(pt 688 160)
+	(bus)
+)
+(connector
+	(pt 648 144)
+	(pt 680 144)
+	(bus)
+)
+(connector
+	(pt 648 128)
+	(pt 680 128)
 	(bus)
 )
 (junction (pt 32 144))
-(junction (pt 0 144))
+(junction (pt -256 144))
